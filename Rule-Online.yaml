@@ -1,0 +1,269 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+external-ui: "/usr/share/openclash/ui"
+bind-address: "*"
+unified-delay: true
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+  - tcp://8.8.8.8:53
+  - tcp://8.8.4.4:53
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  nameserver:
+  - 8.8.8.8
+  - 8.8.4.4
+  - 94.140.14.14
+  - 94.140.15.15
+  - https://dns.adguard-dns.com/dns-query
+  - https://dns.google/dns-query
+  - tls://dns.adguard-dns.com
+  - tls://dns.google
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 127.0.0.1:7874
+  fake-ip-filter:
+  - "+.*"
+  default-nameserver:
+  - 8.8.8.8
+  - 8.8.4.4
+  - 94.140.14.14
+  - 94.140.15.15
+proxy-providers:
+  Server:
+    type: file
+    path: "./proxy_provider/server.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 180
+proxy-groups:
+- name: 18+
+  type: select
+  proxies:
+  - REJECT
+  - Server
+- name: Ads
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+- name: Chat
+  type: select
+  strategy: consistent-hashing
+  disable-udp: false
+  proxies:
+  - DIRECT
+  - Server
+- name: Server
+  type: load-balance
+  strategy: round-robin
+  disable-udp: false
+  use:
+  - Server
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+rules:
+- RULE-SET,18+,18+
+- RULE-SET,Ads,Ads
+- RULE-SET,Banking,Server
+- RULE-SET,Disney,Server
+- GEOIP,ID,Server
+- RULE-SET,Gaming,Server
+- RULE-SET,Line,Server
+- RULE-SET,Netflix,Server
+- RULE-SET,Olshop,Server
+- RULE-SET,Primevideo,Server
+- RULE-SET,REJECT,Server
+- RULE-SET,Sosmed,Server
+- RULE-SET,Stream,Server
+- RULE-SET,Telecidr,Server
+- RULE-SET,Telegram,Server
+- RULE-SET,Tiktok,Server
+- RULE-SET,Twitter,Server
+- RULE-SET,Youtube,Server
+- RULE-SET,Zerotr,Server
+- SCRIPT,TCPgames,Server
+- SCRIPT,UDPgames,Server
+- MATCH,GLOBAL
+script:
+  shortcuts:
+    TCPgames: network == 'tcp' and dst_port not in [21, 22, 23, 53, 80, 123, 143, 194, 443, 465, 587, 853, 993, 995, 998, 2052, 2053, 2082, 2083, 2086, 2095, 2096, 5222, 5228, 5229, 5230, 8080, 8443, 8880, 8883, 8888, 8889]
+    UDPgames: network == 'udp' and dst_port not in [21, 22, 23, 53, 80, 123, 143, 194, 443, 465, 587, 853, 993, 995, 998, 2052, 2053, 2082, 2083, 2086, 2095, 2096, 5222, 5228, 5229, 5230, 8080, 8443, 8880, 8883, 8888, 8889]
+rule-providers:
+  18+:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/saru.yaml"
+    path: "./rule_provider/saru.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Ads:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/ads.yaml"
+    path: "./rule_provider/ads.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Banking:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/banking.yaml"
+    path: "./rule_provider/banking.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Disney:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/disney.yaml"
+    path: "./rule_provider/disney.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Gaming:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/gaming.yaml"
+    path: "./rule_provider/gaming.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Line:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/line.yaml"
+    path: "./rule_provider/line.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Netflix:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/netflix.yaml"
+    path: "./rule_provider/netflix.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Reject:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/reject.yaml"
+    path: "./rule_provider/reject.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Olshop:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/olshop.yaml"
+    path: "./rule_provider/olshop.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Primevideo:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/primevideo.yaml"
+    path: "./rule_provider/primevideo.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Sosmed:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/sosmed.yaml"
+    path: "./rule_provider/sosmed.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Stream:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/stream.yaml"
+    path: "./rule_provider/stream.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Telecidr:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/telecidr.yaml"
+    path: "./rule_provider/telecidr.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Telegram:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/telegram.yaml"
+    path: "./rule_provider/telegram.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Tiktok:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/tiktok.yaml"
+    path: "./rule_provider/tiktok.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Twitter:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/twitter.yaml"
+    path: "./rule_provider/twitter.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Youtube:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/youtube.yaml"
+    path: "./rule_provider/youtube.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  Zerotr:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/zerotier.yaml"
+    path: "./rule_provider/zerotier.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300

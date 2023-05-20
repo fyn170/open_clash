@@ -1,0 +1,12 @@
+# OpenClash Rule
+# [Fynn]
+# (https://github.com/fyn170/conf-cfm)
+
+payload:
+  # reject
+  - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+  # Google Ads
+  - DOMAIN-SUFFIX,googlesyndication.com
+  - DOMAIN-SUFFIX,ads.google.com
+  - DOMAIN-SUFFIX,adservice.google.com
+  - DOMAIN-SUFFIX,googleadservices.com

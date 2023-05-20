@@ -1,0 +1,43 @@
+# OpenClash Rule
+# [Fynn]
+# (https://github.com/fyn170/conf-cfm)
+
+payload:
+  # Bhinneka
+  - DOMAIN-KEYWORD,bhinneka
+  - DOMAIN-SUFFIX,bhineka.com
+  # Blibli
+  - DOMAIN-KEYWORD,Blibli
+  - DOMAIN-SUFFIX,blibli.com
+  # Bukalapak
+  - DOMAIN-KEYWORD,bukalapak
+  - DOMAIN-SUFFIX,bukalapak.com
+  # Jd.Id
+  - DOMAIN-SUFFIX,jd.id
+  # Lazada
+  - DOMAIN-KEYWORD,Lazada
+  - DOMAIN-SUFFIX,lazada.co.id
+  - DOMAIN-KEYWORD,lazada.com
+  # Oramu
+  - DOMAIN-KEYWORD,orami
+  - DOMAIN-KEYWORD,orami.id
+  - DOMAIN-KEYWORD,orami.com
+  - DOMAIN-SUFFIX,orami.co.id
+  # Ralali
+  - DOMAIN-KEYWORD,ralali
+  - DOMAIN-SUFFIX,ralali.com
+  # Shopee
+  - DOMAIN-KEYWORD,shopee
+  - DOMAIN-SUFFIX,shopee.co.id
+  - DOMAIN-SUFFIX,shopeemobile.com
+  - DOMAIN-SUFFIX,shopee.com
+  - DOMAIN-SUFFIX,shopee.sg
+  # Tokopedia
+  - DOMAIN-KEYWORD,tokopedia
+  - DOMAIN-SUFFIX,tokopedia.com
+  - DOMAIN-SUFFIX,tokopedia.net
+  # Zalora
+  - DOMAIN-KEYWORD,zalora
+  - DOMAIN-SUFFIX,zalora.sg
+  - DOMAIN-SUFFIX,zalora.com
+  - DOMAIN-SUFFIX,zalora.co.id

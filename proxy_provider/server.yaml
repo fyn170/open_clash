@@ -1,0 +1,33 @@
+proxies:
+  - name: VMESS-SSL
+    server: your.host.com
+    port: 443
+    type: vmess
+    uuid: f89e70c0-d482-xxx-xxxx-xxxxx-xxxx
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: bug.com
+    network: ws
+    ws-opts:
+      path: /vmws
+      headers:
+        Host: bug.com
+    udp: true
+  - name: VMESS-WS
+    server: bug.com
+    port: 443
+    type: vmess
+    uuid: f89e70c0-d482-xxx-xxxx-xxxxx-xxxx
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: your.host.com
+    network: ws
+    ws-opts:
+      path: /vmws
+      headers:
+        Host: your.host.com
+    udp: true
