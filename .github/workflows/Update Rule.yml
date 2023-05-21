@@ -100,7 +100,6 @@ jobs:
       - name: Trigger Bot Update
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           repository: https://github.com/fyn170/open_clash
           event-type: update-rule
 
