@@ -20,101 +20,83 @@ jobs:
           curl -s https://dblw.oisd.nl/ -o ads.yaml
           sed -i '/^$/d' ads.yaml
           sed -i '4,9d' ads.yaml
-          #start word
           sed -ie '/^#/! s/*./- "+./' ads.yaml
-          #end word
           sed -ie '/^#/! s/$/"/' ads.yaml
           sed -i 's|# Title: oisd big|payload:|' ads.yaml
-          rm -fr ads.yamle
+          rm -f ads.yamle
           
-          # Banking
-          echo "Downloading Discord source list..."
+          echo "Downloading banking source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/banking.yaml -o banking.yaml
-          rm -fr banking.yamle
+          rm -f banking.yamle
           
-	  # Discord
           echo "Downloading Discord source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.yaml -o discord.yaml
-          rm -fr discord.yamle
+          rm -f discord.yamle
           
-          # Gaming
-          echo "Downloading rule_games source list..."
+          echo "Downloading gaming source list..."
           curl -s https://rules.kr328.app/category-games.yaml -o gaming.yaml
-          rm -fr gaming.yamle
-		  
-          # Judi
-          echo "Downloading Discord source list..."
+          rm -f gaming.yamle
+          
+          echo "Downloading judi source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/judi.yaml -o judi.yaml
-          rm -fr judi.yamle
-		  
-          # Olshop
-          echo "Downloading Discord source list..."
+          rm -f judi.yamle
+          
+          echo "Downloading olshop source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/olshop.yaml -o olshop.yaml
-          rm -fr olshop.yamle
-		  
-          # Porn
-          echo "Downloading rule_porn source list..."
+          rm -f olshop.yamle
+          
+          echo "Downloading porn source list..."
           curl -s https://rules.kr328.app/category-porn.yaml -o saru.yaml
-          rm -fr saru.yamle
+          rm -f saru.yamle
           
-          # Sosmed
-          echo "Downloading Discord source list..."
+          echo "Downloading sosmed source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/sosmed.yaml -o sosmed.yaml
-          rm -fr sosmed.yamle
-		  
-          # Stream
-          echo "Downloading Discord source list..."
+          rm -f sosmed.yamle
+          
+          echo "Downloading stream source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/stream.yaml -o stream.yaml
-          rm -fr stream.yamle
-		  
-          # Telegram
-          echo "Downloading rule_telegramcidr source list..."
+          rm -f stream.yamle
+          
+          echo "Downloading telecidr source list..."
           curl -s https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt -o telecidr.yaml
-          rm -fr telecidr.yamle
-          echo "Downloading rule_telegram source list..."
+          rm -f telecidr.yamle
+          
+          echo "Downloading telegram source list..."
           curl -s https://rules.kr328.app/telegram.yaml -o telegram.yaml
-          rm -fr telegram.yamle
+          rm -f telegram.yamle
           
-          # Disney+
-          echo "Downloading rule_disneyplus source list..."
+          echo "Downloading Disney+ source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml -o disney.yaml
-          rm -fr disney.yamle
+          rm -f disney.yamle
           
-          # Line
-          echo "Downloading rule_line source list..."
+          echo "Downloading Line source list..."
           curl -s https://rules.kr328.app/line.yaml -o line.yaml
-          rm -fr line.yamle
+          rm -f line.yamle
           
-          # Netflix
-          echo "Downloading rule_netflix source list..."
+          echo "Downloading Netflix source list..."
           curl -s https://rules.kr328.app/netflix.yaml -o netflix.yaml
-          rm -fr netflix.yamle
+          rm -f netflix.yamle
           
-          # PrimeVideo
-          echo "Downloading rule_primevideo source list..."
+          echo "Downloading PrimeVideo source list..."
           curl -s https://rules.kr328.app/primevideo.yaml -o primevideo.yaml
-          rm -fr primevideo.yamle
+          rm -f primevideo.yamle
           
-          # Tiktok
-          echo "Downloading rule_tiktok source list..."
+          echo "Downloading TikTok source list..."
           curl -s https://rules.kr328.app/tiktok.yaml -o tiktok.yaml
-          rm -fr tiktok.yamle
+          rm -f tiktok.yamle
           
-          # Twitter
-          echo "Downloading rule_twitter source list..."
+          echo "Downloading Twitter source list..."
           curl -s https://rules.kr328.app/twitter.yaml -o twitter.yaml
-          rm -fr twitter.yamle
+          rm -f twitter.yamle
           
-          # Youtube
-          echo "Downloading rule_youtube source list..."
+          echo "Downloading YouTube source list..."
           curl -s https://rules.kr328.app/youtube.yaml -o youtube.yaml
-          rm -fr youtube.yamle
-		  
-          # Zerotier
-          echo "Downloading Discord source list..."
+          rm -f youtube.yamle
+          
+          echo "Downloading Zerotier source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/zerotier.yaml -o zerotier.yaml
-          rm -fr zerotier.yamle
-		  
+          rm -f zerotier.yamle
+          
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update Rule Provider
