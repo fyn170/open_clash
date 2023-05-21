@@ -25,9 +25,6 @@ Repository ini menyediakan beberapa rule provider yang dapat digunakan dengan Op
 
 Daftar rule provider yang tersedia dapat ditemukan di direktori `rule_provider`.
 
-## Lisensi
-
-Repository ini dilisensikan di bawah [MIT License](./LICENSE).
 
 ## Credits
 - [fyn170](https://github.com/fyn170/open_clash)
