@@ -32,7 +32,7 @@ jobs:
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/banking.yaml -o banking.yaml
           rm -fr banking.yamle
           
-		  # Discord
+	  # Discord
           echo "Downloading Discord source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.yaml -o discord.yaml
           rm -fr discord.yamle
