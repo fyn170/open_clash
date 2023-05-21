@@ -2,7 +2,7 @@ name: Update Rule
 
 on:
   schedule:
-    - cron: '0 20 * * *'
+    - cron: '0 17 * * *'
   workflow_dispatch:
 
 jobs:
@@ -97,6 +97,13 @@ jobs:
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/zerotier.yaml -o zerotier.yaml
           rm -f zerotier.yamle
           
+      - name: Trigger Bot Update
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: https://github.com/fyn170/open_clash
+          event-type: update-rule
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update Rule Provider
