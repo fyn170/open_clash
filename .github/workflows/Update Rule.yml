@@ -27,7 +27,12 @@ jobs:
           sed -i 's|# Title: oisd big|payload:|' ads.yaml
           rm -fr ads.yamle
           
-          # Discord
+          # Banking
+          echo "Downloading Discord source list..."
+          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/banking.yaml -o banking.yaml
+          rm -fr banking.yamle
+          
+		  # Discord
           echo "Downloading Discord source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.yaml -o discord.yaml
           rm -fr discord.yamle
@@ -36,12 +41,32 @@ jobs:
           echo "Downloading rule_games source list..."
           curl -s https://rules.kr328.app/category-games.yaml -o gaming.yaml
           rm -fr gaming.yamle
-          
+		  
+          # Judi
+          echo "Downloading Discord source list..."
+          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/judi.yaml -o judi.yaml
+          rm -fr judi.yamle
+		  
+          # Olshop
+          echo "Downloading Discord source list..."
+          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/olshop.yaml -o olshop.yaml
+          rm -fr olshop.yamle
+		  
           # Porn
           echo "Downloading rule_porn source list..."
           curl -s https://rules.kr328.app/category-porn.yaml -o saru.yaml
           rm -fr saru.yamle
           
+          # Sosmed
+          echo "Downloading Discord source list..."
+          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/sosmed.yaml -o sosmed.yaml
+          rm -fr sosmed.yamle
+		  
+          # Stream
+          echo "Downloading Discord source list..."
+          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/stream.yaml -o stream.yaml
+          rm -fr stream.yamle
+		  
           # Telegram
           echo "Downloading rule_telegramcidr source list..."
           curl -s https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt -o telecidr.yaml
@@ -50,7 +75,7 @@ jobs:
           curl -s https://rules.kr328.app/telegram.yaml -o telegram.yaml
           rm -fr telegram.yamle
           
-          # Diney+
+          # Disney+
           echo "Downloading rule_disneyplus source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml -o disney.yaml
           rm -fr disney.yamle
@@ -84,7 +109,12 @@ jobs:
           echo "Downloading rule_youtube source list..."
           curl -s https://rules.kr328.app/youtube.yaml -o youtube.yaml
           rm -fr youtube.yamle
-
+		  
+          # Zerotier
+          echo "Downloading Discord source list..."
+          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/zerotier.yaml -o zerotier.yaml
+          rm -fr zerotier.yamle
+		  
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update Rule Provider
