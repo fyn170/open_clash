@@ -14,33 +14,33 @@ tun:
   enable: true
   stack: system
   dns-hijack:
-  - tcp://8.8.8.8:53
-  - tcp://8.8.4.4:53
+    - tcp://8.8.8.8:53
+    - tcp://8.8.4.4:53
 profile:
   store-selected: true
   store-fake-ip: true
 dns:
   nameserver:
-  - 8.8.8.8
-  - 8.8.4.4
-  - 94.140.14.14
-  - 94.140.15.15
-  - https://dns.adguard-dns.com/dns-query
-  - https://dns.google/dns-query
-  - tls://dns.adguard-dns.com
-  - tls://dns.google
+    - 8.8.8.8
+    - 8.8.4.4
+    - 94.140.14.14
+    - 94.140.15.15
+    - https://dns.adguard-dns.com/dns-query
+    - https://dns.google/dns-query
+    - tls://dns.adguard-dns.com
+    - tls://dns.google
   enable: true
   ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   listen: 127.0.0.1:7874
   fake-ip-filter:
-  - "+.*"
+    - "+.*"
   default-nameserver:
-  - 8.8.8.8
-  - 8.8.4.4
-  - 94.140.14.14
-  - 94.140.15.15
+    - 8.8.8.8
+    - 8.8.4.4
+    - 94.140.14.14
+    - 94.140.15.15
 proxy-providers:
   Server:
     type: file
@@ -50,33 +50,33 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 180
 proxy-groups:
-- name: 18+
-  type: select
-  proxies:
-  - REJECT
-  - Server
-- name: Ads
-  type: select
-  proxies:
-  - REJECT
-  - DIRECT
-- name: Chat
-  type: select
-  strategy: consistent-hashing
-  disable-udp: false
-  proxies:
-  - DIRECT
-  - Server
-- name: Server
-  type: load-balance
-  strategy: round-robin
-  disable-udp: false
-  use:
-  - Server
-  health-check:
-    enable: true
-    url: http://www.gstatic.com/generate_204
-    interval: 300
+  - name: 18+
+    type: select
+    proxies:
+      - REJECT
+      - Server
+  - name: Ads
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: Chat
+    type: select
+    strategy: consistent-hashing
+    disable-udp: false
+    proxies:
+      - DIRECT
+      - Server
+  - name: Server
+    type: load-balance
+    strategy: round-robin
+    disable-udp: false
+    use:
+      - Server
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
 rules:
   - RULE-SET,18+,18+
   - RULE-SET,Ads,Ads
