@@ -96,12 +96,6 @@ jobs:
           echo "Downloading Zerotier source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/zerotier.yaml -o zerotier.yaml
           rm -f zerotier.yamle
-          
-      - name: Trigger Bot Update
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          repository: https://github.com/fyn170/open_clash
-          event-type: update-rule
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
