@@ -78,51 +78,55 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
 rules:
-- RULE-SET,18+,18+
-- RULE-SET,Ads,Ads
-- RULE-SET,Banking,Server
-- RULE-SET,Disney,Server
-- GEOIP,ID,Server
-- RULE-SET,Gaming,Server
-- RULE-SET,Line,Server
-- RULE-SET,Netflix,Server
-- RULE-SET,Olshop,Server
-- RULE-SET,Primevideo,Server
-- RULE-SET,REJECT,Server
-- RULE-SET,Sosmed,Server
-- RULE-SET,Stream,Server
-- RULE-SET,Telecidr,Server
-- RULE-SET,Telegram,Server
-- RULE-SET,Tiktok,Server
-- RULE-SET,Twitter,Server
-- RULE-SET,Youtube,Server
-- RULE-SET,Zerotr,Server
-- SCRIPT,TCPgames,Server
-- SCRIPT,UDPgames,Server
-- MATCH,GLOBAL
+  - RULE-SET,18+,18+
+  - RULE-SET,Ads,Ads
+  - RULE-SET,Banking,Server
+  - RULE-SET,Disney,Server
+  - GEOIP,ID,Server
+  - RULE-SET,Gaming,Server
+  - RULE-SET,Line,Server
+  - RULE-SET,Netflix,Server
+  - RULE-SET,Olshop,Server
+  - RULE-SET,Primevideo,Server
+  - RULE-SET,Sosmed,Server
+  - RULE-SET,Stream,Server
+  - RULE-SET,Telecidr,Server
+  - RULE-SET,Telegram,Server
+  - RULE-SET,Tiktok,Server
+  - RULE-SET,Twitter,Server
+  - RULE-SET,Youtube,Server
+  - RULE-SET,Zerotr,Server
+  - SCRIPT,TCPgames,Server
+  - SCRIPT,UDPgames,Server
+#  - AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
+#  - AND,((PROCESS-NAME,clash),(NOT,((IN-TYPE,inner)))),REJECT
+#  - AND,((GEOSITE,category-ads-all),(NOT,((DOMAIN-SUFFIX,googlesyndication.com)))),REJECT
+#  - AND,((NETWORK,udp),(OR,((DST-PORT,443),(GEOSITE,youtube)))),REJECT
+#  - IN-TYPE,inner,Server
+  - MATCH,Server
 script:
   shortcuts:
     TCPgames: network == 'tcp' and dst_port not in [21, 22, 23, 53, 80, 123, 143, 194, 443, 465, 587, 853, 993, 995, 998, 2052, 2053, 2082, 2083, 2086, 2095, 2096, 5222, 5228, 5229, 5230, 8080, 8443, 8880, 8883, 8888, 8889]
-    UDPgames: network == 'udp' and dst_port not in [21, 22, 23, 53, 80, 123, 143, 194, 443, 465, 587, 853, 993, 995, 998, 2052, 2053, 2082, 2083, 2086, 2095, 2096, 5222, 5228, 5229, 5230, 8080, 8443, 8880, 8883, 8888, 8889]
+    UDPgames: network == 'udp' and dst_port not in [21, 22, 23, 53, 80, 123, 143, 194, 443, 465, 587, 853, 993, 995, 998, 2052, 2053, 2082, 2083, 2086, 2095, 2096, 3478, 14792, 13584, 5222, 5228, 5229, 5230, 8080, 8443, 8880, 8883, 8888, 8889]
 rule-providers:
   18+:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/saru.yaml"
     path: "./rule_provider/saru.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Ads:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/ads.yaml"
     path: "./rule_provider/ads.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Banking:
     type: http
     behavior: classical
@@ -131,7 +135,7 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Disney:
     type: http
     behavior: classical
@@ -140,34 +144,34 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Gaming:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/gaming.yaml"
     path: "./rule_provider/gaming.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Line:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/line.yaml"
     path: "./rule_provider/line.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Netflix:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/netflix.yaml"
     path: "./rule_provider/netflix.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Reject:
     type: http
     behavior: classical
@@ -176,7 +180,7 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Olshop:
     type: http
     behavior: classical
@@ -185,16 +189,16 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Primevideo:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/primevideo.yaml"
     path: "./rule_provider/primevideo.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Sosmed:
     type: http
     behavior: classical
@@ -203,7 +207,7 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Stream:
     type: http
     behavior: classical
@@ -212,52 +216,52 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Telecidr:
     type: http
-    behavior: classical
+    behavior: ipcidr
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/telecidr.yaml"
     path: "./rule_provider/telecidr.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Telegram:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/telegram.yaml"
     path: "./rule_provider/telegram.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Tiktok:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/tiktok.yaml"
     path: "./rule_provider/tiktok.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Twitter:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/twitter.yaml"
     path: "./rule_provider/twitter.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Youtube:
     type: http
-    behavior: classical
+    behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/open_clash/main/rule_provider/youtube.yaml"
     path: "./rule_provider/youtube.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600
   Zerotr:
     type: http
     behavior: classical
@@ -266,4 +270,4 @@ rule-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 3600

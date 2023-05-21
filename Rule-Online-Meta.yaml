@@ -96,13 +96,13 @@ rules:
   - RULE-SET,Twitter,Server
   - RULE-SET,Youtube,Server
   - RULE-SET,Zerotr,Server
-  - SCRIPT,TCPgames,Server
-  - SCRIPT,UDPgames,Server
-#  - AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
-#  - AND,((PROCESS-NAME,clash),(NOT,((IN-TYPE,inner)))),REJECT
-#  - AND,((GEOSITE,category-ads-all),(NOT,((DOMAIN-SUFFIX,googlesyndication.com)))),REJECT
-#  - AND,((NETWORK,udp),(OR,((DST-PORT,443),(GEOSITE,youtube)))),REJECT
-#  - IN-TYPE,inner,Server
+#  - SCRIPT,TCPgames,Server
+#  - SCRIPT,UDPgames,Server
+  - AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
+  - AND,((PROCESS-NAME,clash),(NOT,((IN-TYPE,inner)))),REJECT
+  - AND,((GEOSITE,category-ads-all),(NOT,((DOMAIN-SUFFIX,googlesyndication.com)))),REJECT
+  - AND,((NETWORK,udp),(OR,((DST-PORT,443),(GEOSITE,youtube)))),REJECT
+  - IN-TYPE,inner,Server
   - MATCH,Server
 script:
   shortcuts:
