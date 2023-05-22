@@ -27,5 +27,6 @@ Daftar rule provider yang tersedia dapat ditemukan di direktori `rule_provider`.
 
 
 ## Credits
-- [fyn170](https://github.com/fyn170/open_clash)
+- Hehe ([fyn170](https://github.com/fyn170/open_clash))
+- Sumber Referensi ([malikshi](https://github.com/malikshi/open_clash))
 - ChatGPT by OpenAI ([openai.com](https://chat.openai.com))
