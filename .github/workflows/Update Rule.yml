@@ -24,7 +24,7 @@ jobs:
           sed -ie '/^#/! s/*./- "+./' ads.yaml
           sed -ie '/^#/! s/$/"/' ads.yaml
           sed -i 's|# Title: oisd big|payload:|' ads.yaml
-          rm -f ads.ymle
+          rm -f ads.yamle
 
           echo "Downloading Apkpure source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apkpure/Apkpure.yaml -o apkpure.yaml
