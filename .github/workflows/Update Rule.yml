@@ -18,105 +18,85 @@ jobs:
         working-directory: ./rule_provider
         run: |
           echo "Downloading oisd full source list..."
-          curl -s https://dblw.oisd.nl/ -o ads.yaml
-          sed -i '/^$/d' ads.yaml
-          sed -i '4,9d' ads.yaml
-          sed -ie '/^#/! s/*./- "+./' ads.yaml
-          sed -ie '/^#/! s/$/"/' ads.yaml
-          sed -i 's|# Title: oisd big|payload:|' ads.yaml
-          rm -f ads.yamle
+          curl -s https://big.oisd.nl/ -o ads.txt
+          sed -i '1d' ads.txt
+          sed -i 's/^\!/#/g' ads.txt
+          sed -i '4,7d' ads.txt
+          sed -i 's/||/  - "+./g' ads.txt
+          sed -i -e '$a"' ads.txt
+          sed -i 's|# Title: oisd big|payload:|' ads.txt
+          sed -i '/^$/d' ads.txt
+          sed -i 's/\^/"/g' ads.txt
+          mv ads.txt ads.yaml
 
           echo "Downloading Apkpure source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apkpure/Apkpure.yaml -o apkpure.yaml
-          rm -f apkpure.yml
           
           echo "Downloading banking source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/banking.yaml -o banking.yaml
-          rm -f banking.yml
 
           echo "Downloading Cloudflare source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.yaml -o cloudflare.yaml
-          rm -f cloudflare.yml
           
           echo "Downloading Discord source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.yaml -o discord.yaml
-          rm -f discord.yml
 
           echo "Downloading gaming source list..."
           curl -s https://rules.kr328.app/category-games.yaml -o gaming.yaml
-          rm -f gaming.yml
 
           echo "Downloading Garena source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Garena/Garena.yaml -o garena.yaml
-          rm -f garena.yml
           
           echo "Downloading IpTvOther source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVOther/IPTVOther_Classical.yaml -o iptv.yaml
-          rm -f iptv.yml
           
           echo "Downloading Instagram source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml -o instagram.yaml
-          rm -f instagram.yml
           
           echo "Downloading judi source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/judi.yaml -o judi.yaml
-          rm -f judi.yml
 
           echo "Downloading olshop source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/olshop.yaml -o olshop.yaml
-          rm -f olshop.yml
 
           echo "Downloading porn source list..."
           curl -s https://rules.kr328.app/category-porn.yaml -o saru.yaml
-          rm -f saru.yml
 
           echo "Downloading sosmed source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/sosmed.yaml -o sosmed.yaml
-          rm -f sosmed.yml
 
           echo "Downloading stream source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/stream.yaml -o stream.yaml
-          rm -f stream.yml
 
           echo "Downloading telecidr source list..."
           curl -s https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt -o telecidr.yaml
-          rm -f telecidr.yml
 
           echo "Downloading telegram source list..."
           curl -s https://rules.kr328.app/telegram.yaml -o telegram.yaml
-          rm -f telegram.yml
 
           echo "Downloading Disney+ source list..."
           curl -s https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml -o disney.yaml
-          rm -f disney.yml
 
           echo "Downloading Line source list..."
           curl -s https://rules.kr328.app/line.yaml -o line.yaml
-          rm -f line.yml
 
           echo "Downloading Netflix source list..."
           curl -s https://rules.kr328.app/netflix.yaml -o netflix.yaml
-          rm -f netflix.yml
 
           echo "Downloading PrimeVideo source list..."
           curl -s https://rules.kr328.app/primevideo.yaml -o primevideo.yaml
-          rm -f primevideo.yml
 
           echo "Downloading TikTok source list..."
           curl -s https://rules.kr328.app/tiktok.yaml -o tiktok.yaml
-          rm -f tiktok.yml
 
           echo "Downloading Twitter source list..."
           curl -s https://rules.kr328.app/twitter.yaml -o twitter.yaml
-          rm -f twitter.yml
 
           echo "Downloading YouTube source list..."
           curl -s https://rules.kr328.app/youtube.yaml -o youtube.yaml
-          rm -f youtube.yml
 
           echo "Downloading Zerotier source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/zerotier.yaml -o zerotier.yaml
-          rm -f zerotier.yml
 
       - name: Trigger Bot Update
         uses: peter-evans/repository-dispatch@v1
@@ -127,4 +107,4 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update Rule Provider
+          commit_message: Auto Update
