@@ -27,6 +27,7 @@ jobs:
           sed -i 's|# Title: oisd big|payload:|' ads.txt
           sed -i '/^$/d' ads.txt
           sed -i 's/\^/"/g' ads.txt
+          sed -i '$d' ads.txt
           mv ads.txt ads.yaml
 
           echo "Downloading Apkpure source list..."
