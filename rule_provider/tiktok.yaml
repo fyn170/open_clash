@@ -1,15 +1,7 @@
-# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/tiktok
-
-# Behavior: domain
-
-payload:
-- "+.byteoversea.com"
-- "+.muscdn.com"
-- "+.musical.ly"
-- "+.tik-tokapi.com"
-- "+.tiktok.com"
-- "+.tiktokcdn.com"
-- "+.tiktokd.net"
-- "+.tiktokd.org"
-- "+.tiktokv.com"
-- "p16-tiktokcdn-com.akamaized.net"
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>cloudflare</center>
+</body>
+</html>
