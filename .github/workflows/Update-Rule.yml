@@ -29,7 +29,17 @@ jobs:
           sed -i 's/\^/"/g' ads.txt
           sed -i '$d' ads.txt
           mv ads.txt ads.yaml
-
+          
+          echo "Downloading Porn source list for OpenClash..."
+          curl -s "https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" -o porn.txt
+          sed -i '1,140d' "porn.txt"
+          sed -i '/^$/d' "porn.txt"
+          sed -i '2i payload:' "porn.txt"
+          sed -i '3,$s/^#//' "porn.txt"
+          sed -i '3,$s/^/  - "+./' "porn.txt"
+          sed -i '3,$s/$/"/' "porn.txt"
+          mv "porn.txt" "saru.yaml"
+          
           echo "Downloading Apkpure source list..."
           curl -s https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apkpure/Apkpure.yaml -o apkpure.yaml
           
@@ -59,9 +69,6 @@ jobs:
 
           echo "Downloading olshop source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/olshop.yaml -o olshop.yaml
-
-          echo "Downloading porn source list..."
-          curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/saru.yaml -o saru.yaml
 
           echo "Downloading sosmed source list..."
           curl -s https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/sosmed.yaml -o sosmed.yaml
