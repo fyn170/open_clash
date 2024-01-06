@@ -34,6 +34,7 @@ jobs:
           curl -s "https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" -o porn.txt
           sed -i '1,140d' "porn.txt"
           sed -i '/^$/d' "porn.txt"
+          sed -i '1s/^/ #/' "porn.txt"
           sed -i '2i payload:' "porn.txt"
           sed -i '3,$s/^#//' "porn.txt"
           sed -i '3,$s/^/  - "+./' "porn.txt"
