@@ -1,4 +1,4 @@
-# Version: 202410071606
+# Version: 202410081350
 payload:
 # Description: Block. Don't break.
 # License: https://github.com/sjhgvr/oisd/blob/main/LICENSE
@@ -19264,7 +19264,6 @@ payload:
   - "+.axiomaticalley.com"
   - "+.axiomaticanger.com"
   - "+.axiomcable.fr"
-  - "+.axis-advisors.com"
   - "+.axisbuild.com"
   - "+.axisca.lk"
   - "+.axisdevelopmentltd.com"
@@ -28002,7 +28001,6 @@ payload:
   - "+.cdeb.ru"
   - "+.cderlearn.com"
   - "+.cdfcnngojhp.com"
-  - "+.cdfge.xyz"
   - "+.cdfhidrk.xyz"
   - "+.cdftizu.xyz"
   - "+.cdgfa.ifeng.com"
@@ -84778,7 +84776,6 @@ payload:
   - "+.nightpower.ru"
   - "+.nightsaizle.com"
   - "+.nightsgeological.com"
-  - "+.nightsilver.net"
   - "+.nightspickcough.com"
   - "+.nightvision.tech"
   - "+.nightwound.com"
@@ -86403,6 +86400,7 @@ payload:
   - "+.oaidhjf.superweb.ws"
   - "+.oainternetservices.com"
   - "+.oainzuo.xyz"
+  - "+.oaiqksi.top"
   - "+.oakapsot.com"
   - "+.oakbustrp.com"
   - "+.oakchokerfumes.com"
